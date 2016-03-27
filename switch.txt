@@ -6,7 +6,7 @@ AArch32. While looking through code and reading specs it seemed it was.
 The specs were claiming it could be done only on exception level, eg. from EL0 to
 EL1 and viceversa. Looking at the specs, it turns out that if CPSR has the M[4] bit
 set it's AArch32, and if it's 0 in PSTATE we are AArch64. PSTATE or Process State is
-flags register for AArch64, while CPSR is Current Program Status Register, or flags
+the flags register for AArch64, while CPSR is the Current Program Status Register, or flags
 register in AArch32.
 
 The only way as it seems is to change M[4] bit when we are coming back from EL1 to EL0, so
