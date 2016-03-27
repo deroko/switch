@@ -1,7 +1,16 @@
 CPATH=
+
+UNAME = $(shell uname)
+ifeq ($(UNAME), Linux)
+PREBUILT_PATH=linux-x86_64
+endif
+ifeq ($(UNAME), Darwin)
+PREBUILT_PATH=darwin-x86_64
+endif
+
 NDKROOT64= /opt/android
 SYSROOT64=$(NDKROOT64)/platforms/android-21/arch-arm64
-TOOLCHAINPATH64=$(NDKROOT64)/toolchains/aarch64-linux-android-4.9/prebuilt/darwin-x86_64/bin
+TOOLCHAINPATH64=$(NDKROOT64)/toolchains/aarch64-linux-android-4.9/prebuilt/$(PREBUILT_PATH)/bin
 TOOLCHAIN64=$(TOOLCHAINPATH64)/aarch64-linux-android-
 CPP64     =$(TOOLCHAIN64)cpp
 AR64      =$(TOOLCHAIN64)ar
@@ -17,7 +26,7 @@ CPPFLAGS64=--sysroot=$(SYSROOT64)
 
 NDKROOT=$(NDKROOT64)
 SYSROOT=$(NDKROOT)/platforms/android-21/arch-arm
-TOOLCHAINPATH=$(NDKROOT)/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64/bin
+TOOLCHAINPATH=$(NDKROOT)/toolchains/arm-linux-androideabi-4.9/prebuilt/$(PREBUILT_PATH)/bin
 TOOLCHAIN=$(TOOLCHAINPATH)/arm-linux-androideabi-
 CPP     =$(TOOLCHAIN)cpp
 AR      =$(TOOLCHAIN)ar
