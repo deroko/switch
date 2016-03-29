@@ -187,7 +187,7 @@ gdb$ x/10i $lr
    0xffff0518:	andeq	r0, r0, r0
 
 Since we are now executing aarch64 code, obviously we can't simply return from the 
-signal handler, nor can we use LR or X14 to to return to sys_rt_sigreturn mode. If we
+signal handler, nor can we use LR or X14 to to return to sys_rt_sigreturn code. If we
 would use a AArch64 RET to return from the signal handler where LR is X30, we would
 probably end up in a loop since X30 is holding the address of our last call from
 AArch64 (if we made any).
