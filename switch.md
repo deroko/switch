@@ -1,6 +1,6 @@
 # From AArch32 to AArch64 and back
 
-###deroko of ARTeam
+### deroko of ARTeam
 
 I was thinking whether it was possible to call AArch64 (64-bit ARM architecture) syscalls from AArch32 (32-bit ARM architecture). While looking through code and reading specs it seemed it was. The specs were claiming it could be done only on exception level, eg. from `EL0` to `EL1` and viceversa. Looking at the specs, it turns out that if `CPSR` has the `M[4]` bit set it's AArch32, and if it's `0` in `PSTATE` we are AArch64. `PSTATE` or `Process State` is the `flags` register for AArch64, while `CPSR` is the `Current Program Status Register`, or `flags` register in AArch32.
 
