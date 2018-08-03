@@ -38,7 +38,7 @@ int main(){
 	raw_code = export_kill(&raw_code_size);
 	memcpy(buff, raw_code, raw_code_size);
 	
-	syscall(__ARM_NR_cacheflush, buff, (unsigned long)buff + 0x100000);
+	syscall(__ARM_NR_cacheflush, buff, (unsigned long)buff + 0x100000, 0);
 	tls = __get_tls();
 	fn = (killfn)buff;        
 	fn(getpid(), SIGUSR1);
